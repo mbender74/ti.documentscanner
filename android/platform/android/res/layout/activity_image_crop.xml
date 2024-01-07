@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/camera_ui_container"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:clipToPadding="false"
+    android:clipChildren="false"
+    android:fitsSystemWindows="true">
+
+    <ti.documentscanner.cameraview.CameraView
+        android:id="@+id/camera_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:fitsSystemWindows="true"
+        android:contentDescription="@string/camera_preview" />
+        
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottomBar"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/buttons_container_height"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:minHeight="@dimen/buttons_container_height">
+        
+            <include
+                android:id="@+id/filters_view"
+                layout="@layout/filters"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/buttons_filter_height"
+                app:layout_constraintBottom_toTopOf="@+id/bottomButtons"
+                />
+
+            <LinearLayout
+                android:id="@+id/bottomButtons"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/buttons_container_min_height"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/buttons_container_horizontal_padding">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ti.documentscanner.ui.CircleButton
+                        android:id="@+id/retake_photo_button"
+                        android:layout_width="@dimen/small_button_diameter"
+                        android:layout_height="@dimen/small_button_diameter"
+                        android:layout_gravity="center"
+                        android:scaleY="0.7"
+                        android:scaleX="0.7"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_baseline_arrow_back_24"
+                        android:stateListAnimator="@animator/button_grow_animation" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ti.documentscanner.ui.DoneButton
+                        android:layout_margin="20dp"
+                        android:id="@+id/complete_document_scan_button"
+                        android:layout_width="@dimen/large_button_diameter"
+                        android:layout_height="@dimen/large_button_diameter"
+                        android:layout_gravity="center"
+                        android:scaleY="0.7"
+                        android:scaleX="0.7"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_baseline_check_24"
+                        android:stateListAnimator="@animator/button_grow_animation" />
+
+                    <ti.documentscanner.ui.CircleTextButton
+                        android:id="@+id/document_counter_button"
+                        android:layout_marginRight="5dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:scaleY="0.7"
+                        android:scaleX="0.7"
+                        android:layout_gravity="center_vertical|right"
+                        android:background="@android:color/transparent"/>
+
+                </FrameLayout>
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ti.documentscanner.ui.CircleButton
+                        android:id="@+id/new_photo_button"
+                        android:layout_width="@dimen/small_button_diameter"
+                        android:layout_height="@dimen/small_button_diameter"
+                        android:layout_gravity="center"
+                        android:scaleY="0.7"
+                        android:scaleX="0.7"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_baseline_add_24"
+                        android:stateListAnimator="@animator/button_grow_animation" />
+
+                    <ti.documentscanner.ui.CircleButton
+                        android:id="@+id/flash_button"
+                        android:layout_width="@dimen/small_button_diameter"
+                        android:layout_height="@dimen/small_button_diameter"
+                        android:layout_gravity="center"
+                        android:scaleY="0.7"
+                        android:scaleX="0.7"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/flash_auto_24"
+                        android:stateListAnimator="@animator/button_grow_animation" />
+
+                </FrameLayout>
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        
+        
+    <androidx.constraintlayout.widget.ConstraintLayout                     android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar">
+        
+        <ti.documentscanner.ui.CropView
+            android:id="@+id/crop_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:clipChildren="false"/>
+            
+        <ti.documentscanner.ui.ImageCropView
+            android:id="@+id/image_view"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/image_crop_view_initial_height"
+            android:contentDescription="@string/image_with_cropper" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
